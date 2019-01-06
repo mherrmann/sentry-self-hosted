@@ -1,0 +1,44 @@
+ssl_certificate      /etc/letsencrypt/live/DOMAIN/fullchain.pem;
+ssl_certificate_key  /etc/letsencrypt/live/DOMAIN/privkey.pem;
+
+server {
+  listen   80;
+  server_name DOMAIN;
+
+  location / {
+    if ($request_method = GET) {
+      rewrite  ^ https://$host$request_uri? permanent;
+    }
+    return 405;
+  }
+}
+
+server {
+  listen   443 ssl;
+  server_name DOMAIN;
+
+  proxy_set_header   Host                 $http_host;
+  proxy_set_header   X-Forwarded-Proto    $scheme;
+  proxy_set_header   X-Forwarded-For      $remote_addr;
+  proxy_redirect     off;
+
+  # keepalive + raven.js is a disaster
+  keepalive_timeout 0;
+
+  # use very aggressive timeouts
+  proxy_read_timeout 5s;
+  proxy_send_timeout 5s;
+  send_timeout 5s;
+  resolver_timeout 5s;
+  client_body_timeout 5s;
+
+  # buffer larger messages
+  client_max_body_size 5m;
+  client_body_buffer_size 100k;
+
+  location / {
+    proxy_pass        http://localhost:9000;
+
+    add_header Strict-Transport-Security "max-age=31536000";
+  }
+}
