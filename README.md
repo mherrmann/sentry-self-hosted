@@ -26,7 +26,7 @@ Nanode for $5/mo is enough.
 ## 3. Update your DNS
 The Linode management interface should now show the IP of your
 server. Update your domain's DNS settings so a new `A` record points
-to this IP. Typically, if you'd use a subdomain such as
+to this IP. Typically, you'd use a subdomain such as
 `sentry.myapp.com`.
 
 ## 4. Install Debian 9
