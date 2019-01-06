@@ -10,10 +10,10 @@ set -e
 trap 'echo "Error on line $LINENO"' ERR
 
 # Change these values!
-DOMAIN=
-GMAIL_USER=
-GMAIL_PASSWORD=
-ADMIN_EMAIL=
+DOMAIN=sentry.myapp.com
+GMAIL_USER=john@gmail.com
+GMAIL_PASSWORD=mypassword
+ADMIN_EMAIL=john@gmail.com
 
 if [ -z "$LC_ALL" ]; then
     echo 'Setting locale to avoid Perl warnings "Setting locale failed."'
