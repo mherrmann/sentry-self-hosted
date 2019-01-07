@@ -74,3 +74,13 @@ sed -i "s/DOMAIN/${DOMAIN}/g" /etc/nginx/sites-available/sentry
 ln -s /etc/nginx/sites-available/sentry /etc/nginx/sites-enabled/sentry
 rm /etc/nginx/sites-enabled/default
 service nginx reload
+
+echo 'Installing Supervisor...'
+apt-get install supervisor -y
+
+echo 'Configuring Supervisor...'
+cp supervisor*.conf /etc/supervisor/conf.d/
+
+echo 'Updating Supervisor...'
+supervisorctl reread
+supervisorctl update
