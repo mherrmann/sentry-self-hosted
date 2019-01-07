@@ -1,6 +1,4 @@
 # sentry-self-hosted
-Self-host Sentry on Linode for $5 per month
-
 [Sentry](https://sentry.io) is a popular error tracking solution.
 They have a free tier, but it is rather limited. Prices for the
 hosted tier currently start at $26/mo.
