@@ -84,3 +84,6 @@ cp supervisor*.conf /etc/supervisor/conf.d/
 echo 'Updating Supervisor...'
 supervisorctl reread
 supervisorctl update
+
+echo "Rebooting. In a few minutes, you should be able to open https://${DOMAIN}"
+reboot
