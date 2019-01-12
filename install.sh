@@ -58,6 +58,9 @@ su -c 'cd sentry && docker-compose build' - sentry
 su -c 'cd sentry && SENTRY_SECRET_KEY=`docker-compose run --rm web config generate-secret-key` && echo "SENTRY_SECRET_KEY=${SENTRY_SECRET_KEY}" > .env' - sentry
 su -c 'cd sentry && docker-compose run --rm web upgrade' - sentry
 
+echo 'Creating Sentry log file directory...'
+su -c 'mkdir -p /home/sentry/logs' - sentry
+
 echo 'Installing Lets Encrypt...'
 git clone https://github.com/letsencrypt/letsencrypt
 

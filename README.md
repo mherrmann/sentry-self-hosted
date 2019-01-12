@@ -54,8 +54,9 @@ Connect to your server via SSH. Clone this repository:
 Use an editor such as `vi` to change the settings at the top of
 `install.sh`. Then, make the file executable and run it:
 
-    chmod +x sentry-self-hosted/install.sh
-    sentry-self-hosted/install.sh
+    cd sentry-self-hosted
+    chmod +x install.sh
+    ./install.sh
 
 The first time you do this, the script will ask you to log out and
 back in again. Do this but **don't yet run the script again**.
@@ -77,7 +78,8 @@ Then, launch `screen`:
 This shows some information. Press <kbd>ENTER</kbd>. You are now in
 a virtual terminal session hosted by `screen`. Now execute
 
-    sentry-self-hosted/install.sh
+    cd sentry-self-hosted
+    ./install.sh
 
 again. You can detach from this terminal session by pressing
 <kbd>Ctrl</kbd>+<kbd>A</kbd> followed by <kbd>D</kbd>. To attach to
