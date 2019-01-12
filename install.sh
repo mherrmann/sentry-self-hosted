@@ -58,8 +58,8 @@ su -c 'cd sentry && docker-compose build' - sentry
 su -c 'cd sentry && SENTRY_SECRET_KEY=`docker-compose run --rm web config generate-secret-key` && echo "SENTRY_SECRET_KEY=${SENTRY_SECRET_KEY}" > .env' - sentry
 su -c 'cd sentry && docker-compose run --rm web upgrade' - sentry
 
-echo 'Creating Sentry log file directory...'
-su -c 'mkdir -p /home/sentry/logs' - sentry
+echo 'Creating all necessary Docker containers...'
+su -c 'cd sentry && docker-compose up -d' - sentry
 
 echo 'Installing Lets Encrypt...'
 git clone https://github.com/letsencrypt/letsencrypt
@@ -69,6 +69,9 @@ letsencrypt/letsencrypt-auto --standalone --non-interactive --force-renew --emai
 
 echo 'Uninstalling Lets Encrypt...'
 rm -rf letsencrypt
+
+echo 'Creating Sentry log file directory...'
+su -c 'mkdir -p /home/sentry/logs' - sentry
 
 echo 'Setting up Nginx...'
 apt-get install nginx -y
