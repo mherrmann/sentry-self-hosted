@@ -47,6 +47,8 @@ Image by 5GB.
 ## 6. Install Sentry
 Connect to your server via SSH. Clone this repository:
 
+    apt-get update
+    apt-get install git -y
     git clone https://github.com/mherrmann/sentry-self-hosted.git
 
 Use an editor such as `vi` to change the settings at the top of
