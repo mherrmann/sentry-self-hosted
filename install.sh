@@ -34,6 +34,9 @@ apt-get update
 apt-get install docker-engine -y
 
 echo 'Installing docker-compose'
+# Some, but not all versions of Debian have curl pre-installed.
+# Make sure it is installed:
+apt-get install curl -y
 curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
