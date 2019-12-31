@@ -45,7 +45,7 @@ useradd --system --gid docker --shell /bin/bash -m sentry
 
 echo 'Cloning sentry-onpremise repository...'
 su -c 'git clone https://github.com/getsentry/onpremise.git sentry' - sentry
-su -c 'cd sentry && git checkout 4fade2fb1f08eae008c435e4c0c5ef03acc9d9a7' - sentry
+su -c 'cd sentry && git checkout cd13427aa9a231b2b27c9fd14017d183cca52c1e' - sentry
 
 echo 'Updating Sentry config to use SSL...'
 sed -i 's/environment:/environment:\n    SENTRY_USE_SSL: 1/g' /home/sentry/sentry/docker-compose.yml
